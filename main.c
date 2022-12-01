@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "ListaDinEncad.h"
+#include "linkedlist.h"
 
 int main(){
-    Lista *li; 
+    List *LI; 
 
 }
