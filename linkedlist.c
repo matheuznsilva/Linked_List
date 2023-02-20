@@ -38,6 +38,7 @@ void free_list(List* LI){
 		free(LI);	// libera o ponteiro	
 	}	
 }
+
 // ==========================================================
 
 // FUNAÇÃO QUE RETORNA O TAMANHO DA LISTA
@@ -134,7 +135,7 @@ int insert_sorted_list(List* LI, struct data DT){		//  inserção ordenada
 		return 1;
 	} else{		// se não for uma lista vazia, iremos percorre a lista até encontrar um numero de matricula maior que o cadastrado pelo usuário
 		Elem *prev, *current = *LI;		// declaração de ponteiros auxiliares e atribuição do ponteiro atual recebendo a primeira posição da lista
-		while(prev != NULL && current->DATA.num < DT.num){		// loop para percorrer a lista tendo como ponto de parada o final da lista e a matricula do elemento presente na lista ser maior que a do elemento a ser inserido 
+		while(current != NULL && current->DATA.num < DT.num){		// loop para percorrer a lista tendo como ponto de parada o final da lista e a matricula do elemento presente na lista ser maior que a do elemento a ser inserido 
 			prev = current;		// atribui ao ponteiro ant a posição do elemento apontado por atual
 			current = current->next;		// atual recebe a posição do proximo elemento da lista
 		}
@@ -143,7 +144,7 @@ int insert_sorted_list(List* LI, struct data DT){		//  inserção ordenada
 			*LI = NO;		// li passa agora a apontar para o novo elemento
 		} else{		// caso não seja o ponteiro executa os comando a baixo
 			NO->next = current;		// o ponteiro prox do novo elemento passa a apontar para a posição do atual(elemento que o ponteiro atual aponta)
-			current->next = NO;		// o ponteiro prox do elemento apontado por ant passa a apontar para a posição do novo elemento
+			prev->next = NO;		// o ponteiro prox do elemento apontado por ant passa a apontar para a posição do novo elemento
 		}
 		return 1;
 	}
